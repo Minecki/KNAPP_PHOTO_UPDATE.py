@@ -13,16 +13,12 @@ import config as cf
 from time import time
 from ftplib import FTP
 
-#fpt = FTP('ftp://10.2.225.2/')
-#fpt.login('ftppics', 'ftppics')
 
 # Polaczenie z bazą w pliku config.py
 cf.odbc_conf()
 Connection = pyodbc.connect(cf.conn_conf)
 
-# r przed "" lub ''przekazuje by wszystko traktowac jako raw string (wtedy nie potrzeba \\)
 basedir = "\\\\10.248.8.122\\Images\\images\\PL_ecom_approved\\"
-
 
 #basedir = r"C:\Users\MINECADR\Desktop\Test\\"  # Folder z zdjęciami
 
