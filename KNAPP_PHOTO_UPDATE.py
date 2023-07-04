@@ -4,11 +4,9 @@ import pathlib
 import subprocess
 import warnings
 warnings.filterwarnings("ignore")
-
 import pandas
 import pyodbc
 from sqlalchemy.sql.elements import Null
-
 import config as cf
 from time import time
 from ftplib import FTP
@@ -18,11 +16,7 @@ from ftplib import FTP
 cf.odbc_conf()
 Connection = pyodbc.connect(cf.conn_conf)
 
-basedir = "\\\\10.248.8.122\\Images\\images\\PL_ecom_approved\\"
-
-#basedir = r"C:\Users\MINECADR\Desktop\Test\\"  # Folder z zdjęciami
-
-movedir = r'C:\Users\MINECADR\Desktop\Test2\\'  # Folder do umieszczenia zdjęć
+basedir = "\\\\XXXXXXXXXXX\\Images\\images\\PL_ecom_approved\\"
 
 Query = '''SELECT
   TRIM(MATNR) as SAP,
@@ -45,11 +39,6 @@ for file in os.scandir(basedir):
     name = pathlib.Path(file).stem
     # Ostatnia edycja w formacie godzinowym
     lastedit = time_mod // 3600
-
-    # print(filename)
-    # print(name)
-    # print(extension)
-    # print(lastedit)
 
     # Jezeli czas edycji jest mniejszy niz 24 godziny to kopiuje plik
     if lastedit > 24:
